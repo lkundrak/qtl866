@@ -23,6 +23,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    // Silly workaround to avoid qgtk from running a file picker
+    // on wayland while it assumes a X11 window.
+    setenv("WAYLAND_DISPLAY", "", 1);
+
     a.setApplicationName("qtl866");
     a.setOrganizationDomain("com.awce");
 
