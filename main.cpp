@@ -21,6 +21,10 @@ qtl866 - GUI driver for minipro EPROM/Device programmer software
 
 int main(int argc, char *argv[])
 {
+    // Silly workaround to avoid qgtk from running a file picker
+    // on wayland while it assumes a X11 window.
+    setenv("WAYLAND_DISPLAY", "", 1);
+
     QApplication a(argc, argv);
 
     a.setApplicationName("qtl866");
